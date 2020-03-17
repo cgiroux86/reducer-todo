@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 
 const TodoForm = props => {
   const [input, setInput] = useState("");
-  const [id, setId] = useState(0);
 
   return (
     <div>
@@ -30,7 +29,6 @@ const TodoForm = props => {
           onClick={e => {
             e.preventDefault();
             props.clearCompleted();
-            console.log(props.todoList);
           }}
         >
           Clear Completed
@@ -41,20 +39,10 @@ const TodoForm = props => {
           <div
             key={elem.id}
             id={elem.id}
-            // onClick={e => {
-            //   e.preventDefault();
-            //   setId(elem.id);
-            //   props.todoCompleted(id);
-            //   document.getElementById(elem.id).classList.add("complete");
-            // }}
-            onMouseDown={e => {
+            className={elem.completed ? "complete" : null}
+            onClick={e => {
               e.preventDefault();
-              setId(elem.id);
-              document.getElementById(elem.id).classList.add("complete");
-            }}
-            onMouseUp={e => {
-              e.preventDefault();
-              props.todoCompleted(id);
+              props.todoCompleted(elem.id);
             }}
           >
             {elem.item}

@@ -8,6 +8,7 @@ export const initialState = {
 export const todoReducer = (state = initialState, action) => {
   switch (action.type) {
     case TODO:
+      console.log(state);
       return {
         ...state,
         // todo: { ...state.todo, item: action.payload },
@@ -21,6 +22,7 @@ export const todoReducer = (state = initialState, action) => {
         ]
       };
     case TODO_COMPLETED:
+      setTimeout(() => state.todos.map(elem => console.log(elem)), 1);
       console.log(action.payload);
       return {
         ...state,
